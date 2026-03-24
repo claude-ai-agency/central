@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+COMMIT_MSG=$(cat "$1")
+
+PATTERN="^\[(BOARD|CEO|CTO|CPO|CMO|COO|CFO|CHRO|CLO|VP-ENG|ENG-MGR-FE|ENG-MGR-BE|FE-REACT|FE-VUE|FE-JR|BE-PYTHON|BE-NODE|FULLSTACK|DB-ARCH|DB-ENG|SEC-ENG|SEC-AUDIT|DEVOPS|INFRA|MOBILE|AI-ENG|API-DESIGN|QA-LEAD|QA-MANUAL|QA-AUTO|SEC-QA|PERF-QA|PM|PO|SCRUM|BA|UX-RESEARCH|VP-DESIGN|UX-LEAD|UI-SENIOR|BRAND|MOTION|ILLUS|DS-ARCH|VP-GROWTH|CONTENT-STRAT|SEO-LEAD|SEO-SPEC|WRITER-DE|WRITER-EN|SMM-LINKEDIN|SMM-VIDEO|EMAIL-MKT|GROWTH|ANALYTICS|PAID-ADS|COMMUNITY|PR|VP-SALES|SALES-MGR|AE-SENIOR|SDR|PARTNERS|CSM|CTRL|FIN-ANALYST|BUDGET|DSGVO|CONTRACT|IP|TA-MGR|TECH-RECRUITER|CREATIVE-RECRUITER|MKT-RECRUITER|ONBOARDING|PERF-MGR|PPM|PROCESS|DOCS-MGR)\] (feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert|design|content|meeting|decision|hire|deploy|audit|report|sprint|release|org|skills|tracking|compliance|hr)(\([a-z0-9/_-]+\))?: .{10,}"
+
+if ! echo "$COMMIT_MSG" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "❌ COMMIT ABGELEHNT — Ungültiges Format"
+  echo ""
+  echo "Erwartet: [AGENT-PREFIX] type(scope): beschreibung (min. 10 Zeichen)"
+  echo ""
+  echo "Beispiele:"
+  echo "  [FE-REACT] feat(login): add login form with email validation"
+  echo "  [BE-PYTHON] fix(auth): handle expired JWT token gracefully"
+  echo "  [CEO] decision(infra): switch to Hetzner for DSGVO compliance"
+  echo "  [DSGVO] compliance(checkout): privacy review approved"
+  echo "  [QA-AUTO] test(visual): add playwright baselines for login flow"
+  echo ""
+  echo "Dein Commit:"
+  echo "  $COMMIT_MSG"
+  echo ""
+  exit 1
+fi
+
+echo "✅ Commit-Format OK"

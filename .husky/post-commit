@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+MSG=$(git log -1 --pretty=%s 2>/dev/null)
+
+if echo "$MSG" | grep -qi "\] decision"; then
+  echo "📋 Entscheidung geloggt — _org/decisions/ prüfen"
+fi
+if echo "$MSG" | grep -qi "board-update\|board update"; then
+  echo "📊 Board Update committed"
+fi
+if echo "$MSG" | grep -qi "\] hire:"; then
+  echo "👤 Agent ongeboardet"
+fi

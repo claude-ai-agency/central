@@ -15,3 +15,11 @@
 
 ## CEO hat Root-Rechte auf alles im central/ Repo
 ## Alle anderen Agents haben Schreibrechte auf ihren Bereich
+
+## Commit-Regeln (PFLICHT für alle Agents)
+- Spätestens alle 10 Datei-Änderungen committen
+- Nach jeder abgeschlossenen Aufgabe sofort committen
+- Niemals mehr als 20 uncommitted Changes lassen
+- Commit-Format immer: [AGENT-PREFIX] type(scope): beschreibung
+- Nach jedem Commit sofort pushen
+- NICHT auf "alles fertig" warten — lieber kleine häufige Commits
