@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+echo "🔍 Pre-commit Checks..."
+
+# 1. Secrets Scan
+STAGED=$(git diff --cached --name-only 2>/dev/null || true)
+SECRETS_FOUND=0
+
+for file in $STAGED; do
+  [ -f "$file" ] || continue
+  if git diff --cached "$file" | grep -qiE "(api[_-]key|secret[_-]key|password)\s*=\s*['\"][^'\"]{6,}|sk-[a-zA-Z0-9]{40}|AKIA[0-9A-Z]{16}|ghp_[a-zA-Z0-9]{36}"; then
+    echo "❌ Mögliches Secret in: $file"
+    SECRETS_FOUND=1
+  fi
+done
+
+if [ $SECRETS_FOUND -eq 1 ]; then
+  echo "Commit blockiert. Bitte Secrets entfernen."
+  exit 1
+fi
+
+# 2. console.log mit PII (Warning)
+PII_PATTERN="console\.log.*\b(email|password|token|secret|user_id|ssn)\b"
+for file in $STAGED; do
+  [ -f "$file" ] || continue
+  echo "$file" | grep -qE '\.(ts|tsx|js|jsx)$' || continue
+  if git diff --cached "$file" | grep -qiE "$PII_PATTERN"; then
+    echo "⚠️  Mögliches PII-Logging in: $file (DSGVO!)"
+  fi
+done
+
+# 3. Lint (wenn lint-staged verfügbar)
+if command -v npx >/dev/null 2>&1 && [ -f "package.json" ] && grep -q '"lint-staged"' package.json 2>/dev/null; then
+  npx lint-staged 2>/dev/null || {
+    echo "❌ Linting Fehler — fix: npx eslint --fix"
+    exit 1
+  }
+fi
+
+# 4. DSGVO Warning für sensible Pfade
+DSGVO_FILES=$(echo "$STAGED" | grep -iE "(user|customer|payment|auth|email|profile)" || true)
+if [ -n "$DSGVO_FILES" ]; then
+  echo "⚠️  DSGVO-sensible Dateien geändert — PR braucht label: dsgvo-review"
+fi
+
+echo "✅ Pre-commit OK"
