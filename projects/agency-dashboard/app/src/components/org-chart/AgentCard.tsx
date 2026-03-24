@@ -1,18 +1,8 @@
 'use client'
 
-import type { AgentProfile, AgentStatus } from '@/lib/agents/types'
+import type { AgentProfile } from '@/lib/agents/types'
 
-const STATUS_DOT: Record<AgentStatus, string> = {
-  active: 'bg-green-500',
-  'pending-hire': 'bg-yellow-500',
-  offline: 'bg-zinc-600',
-}
-
-const STATUS_LABEL: Record<AgentStatus, string> = {
-  active: 'Active',
-  'pending-hire': 'Pending',
-  offline: 'Offline',
-}
+import { StatusBadge } from '@/components/status-badge'
 
 function parseBudgetPercent(budgetMonthly: string): number | null {
   // Expects formats like "€200/mo (20%)" or "20%" — extract the % value
@@ -43,10 +33,7 @@ export function AgentCard({ agent }: AgentCardProps) {
           <h3 className="text-sm font-semibold text-white mt-0.5 truncate">{agent.role}</h3>
           <p className="text-xs text-muted mt-0.5">→ {agent.reportTo}</p>
         </div>
-        <span className="flex items-center gap-1.5 shrink-0 text-xs text-muted">
-          <span className={`w-1.5 h-1.5 rounded-full ${STATUS_DOT[agent.status]}`} />
-          {STATUS_LABEL[agent.status]}
-        </span>
+        <StatusBadge status={agent.status} />
       </div>
 
       {agent.budgetMonthly && (
