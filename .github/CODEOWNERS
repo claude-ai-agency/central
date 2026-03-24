@@ -1,0 +1,26 @@
+# CODEOWNERS — claude-ai-agency
+# Jeder Agent ist verantwortlich für seinen Bereich
+
+# C-Suite — globale Ownership
+_org/**                     @oliverhees
+_org/board-updates/**       @oliverhees
+_org/decisions/**           @oliverhees
+
+# HR — CHRO
+_hr/**                      @oliverhees  # Wird ersetzt durch @{org}/hr-team
+
+# Finance — CFO
+_finance/**                 @oliverhees  # Wird ersetzt durch @{org}/finance-team
+
+# Legal — CLO
+_legal/**                   @oliverhees  # Wird ersetzt durch @{org}/legal-team
+
+# Development — VP Engineering
+departments/development/**  @oliverhees  # → @{org}/engineering
+src/**                      @oliverhees  # → @{org}/engineering
+
+# Design
+departments/design/**       @oliverhees  # → @{org}/design-team
+
+# Marketing
+departments/marketing/**    @oliverhees  # → @{org}/marketing-team

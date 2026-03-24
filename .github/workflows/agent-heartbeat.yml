@@ -1,0 +1,31 @@
+name: Agent Heartbeats
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-5'   # Mo-Fr 09:00 UTC — Daily Standup
+    - cron: '0 8 * * 5'     # Fr 08:00 UTC — Board Report Trigger
+    - cron: '0 7 * * 1'     # Mo 07:00 UTC — Sprint Check
+
+  workflow_dispatch:
+    inputs:
+      heartbeat_type:
+        description: 'Typ des Heartbeats'
+        required: true
+        default: 'standup'
+        type: choice
+        options:
+          - standup
+          - board-report
+          - sprint-check
+          - all-hands
+
+jobs:
+  trigger-heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Agent Heartbeat
+        run: |
+          echo "Heartbeat triggered: $(date -u)"
+          echo "Type: ${{ github.event.inputs.heartbeat_type || 'scheduled' }}"
+          # In production: trigger agent via API/webhook
+          # CEO agent reads this and creates standup issue
