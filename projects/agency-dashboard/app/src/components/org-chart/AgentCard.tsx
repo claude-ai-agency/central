@@ -7,7 +7,7 @@ import { StatusBadge } from '@/components/status-badge'
 function parseBudgetPercent(budgetMonthly: string): number | null {
   // Expects formats like "€200/mo (20%)" or "20%" — extract the % value
   const match = /(\d+(?:\.\d+)?)\s*%/.exec(budgetMonthly)
-  if (match) return parseFloat(match[1])
+  if (match?.[1] !== undefined) return parseFloat(match[1])
   return null
 }
 
