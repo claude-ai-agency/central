@@ -2,7 +2,7 @@
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 echo "🧪 Pre-push Tests für Branch: $BRANCH"
 
-if [[ "$BRANCH" == "main" || "$BRANCH" == "develop" ]]; then
+if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "develop" ]; then
   echo "→ Schutz-Branch — vollständige Tests..."
 
   if command -v npm &>/dev/null && [ -f "package.json" ]; then
