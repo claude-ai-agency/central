@@ -35,8 +35,9 @@ export async function fetchHiringBudget(): Promise<HiringBudget> {
     .map((cells): AgentBudget | null => {
       if (!cells[0] || !cells[1]) return null
       return {
+        name: cells[0],
         role: cells[0],
-        maxPerMonth: parseEur(cells[1] ?? ''),
+        budgetMonthly: parseEur(cells[1] ?? ''),
         currentMtd: 0,
       }
     })

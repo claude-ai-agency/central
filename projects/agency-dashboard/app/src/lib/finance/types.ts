@@ -1,7 +1,8 @@
 export interface AgentBudget {
-  role: string          // Aus Tabellen-Zeile
-  maxPerMonth: number   // EUR, aus "€XX" String
-  currentMtd: number    // 0 wenn nicht vorhanden
+  name: string            // Agent name / commit prefix
+  role: string            // Aus Tabellen-Zeile
+  budgetMonthly: number   // EUR/month max
+  currentMtd: number      // 0 wenn nicht vorhanden
 }
 
 export interface HiringBudget {
