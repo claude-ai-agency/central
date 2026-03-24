@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --signal-red: #E53E3E;
+  --void-black: #0A0A0A;
+  --surface: #111111;
+  --surface-2: #1A1A1A;
+  --border: #2A2A2A;
+  --text-muted: #666666;
+}
+
+@theme {
+  --color-signal: #E53E3E;
+  --color-void: #0A0A0A;
+  --color-surface: #111111;
+  --color-surface-2: #1A1A1A;
+  --color-border: #2A2A2A;
+  --color-muted: #666666;
+}
