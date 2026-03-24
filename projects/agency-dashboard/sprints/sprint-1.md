@@ -9,12 +9,12 @@
 
 | Datum | Milestone | Owner | Status |
 |-------|-----------|-------|--------|
-| 2026-03-26 | Product Brief + User Stories fertig | CPO | ⏳ |
-| 2026-03-28 | Architektur-Entscheidung (ADR) committed | CTO | ⏳ |
-| 2026-03-31 | Next.js Projekt-Scaffold + GitHub OAuth | Senior FE React | ⏳ |
-| 2026-04-04 | F1: Org-Chart (read-only, GitHub-Daten) | Senior FE React | ⏳ |
-| 2026-04-04 | F3: Token-Kosten Endpoint | Senior BE Python | ⏳ |
-| 2026-04-07 | F2: Projekt-Übersicht MVP | Senior FE React | ⏳ |
+| 2026-03-26 | Product Brief + User Stories fertig | CPO | ✅ 2026-03-24 |
+| 2026-03-28 | Architektur-Entscheidung (ADR) committed | CTO | ✅ 2026-03-24 |
+| 2026-03-31 | Next.js Projekt-Scaffold + GitHub OAuth | Senior FE React | ✅ 2026-03-24 |
+| 2026-04-04 | F1: Org-Chart (read-only, GitHub-Daten) | Senior FE React | ✅ 2026-03-24 |
+| 2026-04-04 | F3: Token-Kosten Endpoint | Senior BE Python | ✅ 2026-03-24 |
+| 2026-04-07 | F2: Projekt-Übersicht MVP | Senior FE React | ✅ 2026-03-24 |
 | 2026-04-07 | Sprint Review + Retro | CEO + Team | ⏳ |
 
 ---
@@ -23,55 +23,57 @@
 
 ### [P0] Setup & Foundation
 
-- [ ] `SETUP-1` — Next.js 15 Projekt-Init (TypeScript strict, Tailwind, ESLint)
+- [x] `SETUP-1` — Next.js 15 Projekt-Init (TypeScript strict, Tailwind, ESLint) ✅ 0fe890b
   Owner: Senior FE React | Deadline: 2026-03-31
-- [ ] `SETUP-2` — GitHub OAuth Integration (next-auth v5, nur Oliver)
+- [x] `SETUP-2` — GitHub OAuth Integration (next-auth v5, nur Oliver) ✅ 0fe890b
   Owner: Senior FE React | Deadline: 2026-03-31
-- [ ] `SETUP-3` — GitHub API Client (REST + GraphQL wrapper, Rate-Limit-Handling)
+- [x] `SETUP-3` — GitHub API Client (REST + GraphQL wrapper, Rate-Limit-Handling) ✅ 0fe890b
   Owner: Senior BE Python | Deadline: 2026-03-31
-- [ ] `SETUP-4` — Playwright-Baseline einrichten (leere Seite als Baseline)
+- [ ] `SETUP-4` — Playwright-Baseline einrichten (leere Seite als Baseline) ⏳ ausstehend
   Owner: QA Lead | Deadline: 2026-04-01
 
 ### [P0] F1 — Org-Chart
 
-- [ ] `F1-1` — GitHub API: Alle aktiven Agent-Profile aus `_hr/agents/` lesen
+- [x] `F1-1` — GitHub API: Alle aktiven Agent-Profile aus `_hr/agents/` lesen ✅ 0fe890b
   Owner: Senior BE Python | Deadline: 2026-04-02
-- [ ] `F1-2` — UI: Org-Chart-Komponente (Signal Red + Void Black)
+- [x] `F1-2` — UI: Org-Chart-Komponente (Signal Red + Void Black) ✅ c2e221a
   Owner: Senior FE React | Deadline: 2026-04-04
-- [ ] `F1-3` — Agent-Status: active/pending/offline aus YAML-Frontmatter
+- [x] `F1-3` — Agent-Status: active/pending/offline aus YAML-Frontmatter ✅ d0cea25
   Owner: Senior FE React | Deadline: 2026-04-04
-- [ ] `F1-4` — Budget-Anzeige pro Agent
+- [x] `F1-4` — Budget-Anzeige pro Agent ✅ c624391
   Owner: Senior FE React | Deadline: 2026-04-04
-- [ ] `F1-5` — Playwright Visual Test: Org-Chart Screenshot-Baseline
+- [ ] `F1-5` — Playwright Visual Test: Org-Chart Screenshot-Baseline ⏳ ausstehend (SETUP-4 dep)
   Owner: QA Lead | Deadline: 2026-04-05
 
 ### [P1] F2 — Projekt-Übersicht
 
-- [ ] `F2-1` — GitHub API: Projekte aus `projects/` lesen, Status aus brief.md
+- [x] `F2-1` — GitHub API: Projekte aus `projects/` lesen, Status aus brief.md ✅ 7da9730
   Owner: Senior BE Python | Deadline: 2026-04-05
-- [ ] `F2-2` — UI: Projekt-Cards mit Progress, ETA, Risiko-Indikator
+- [x] `F2-2` — UI: Projekt-Cards mit Progress, ETA, Risiko-Indikator ✅ 4f1f0d3
   Owner: Senior FE React | Deadline: 2026-04-07
-- [ ] `F2-3` — Playwright Visual Test: Projekt-Übersicht
+- [ ] `F2-3` — Playwright Visual Test: Projekt-Übersicht ⏳ ausstehend (SETUP-4 dep)
   Owner: QA Lead | Deadline: 2026-04-07
 
 ### [P1] F3 — Token-Kosten
 
-- [ ] `F3-1` — Finance-Parser: `_finance/` Markdown lesen + aggregieren
+- [x] `F3-1` — Finance-Parser: `_finance/` Markdown lesen + aggregieren ✅ c0c3658
   Owner: Senior BE Python | Deadline: 2026-04-04
-- [ ] `F3-2` — UI: Token-Kosten-Widget pro Agent (MTD, Week, Today)
+- [x] `F3-2` — UI: Token-Kosten-Widget pro Agent (MTD, Week, Today) ✅ db588ee
   Owner: Senior FE React | Deadline: 2026-04-06
 
 ---
 
 ## Definition of Done (Sprint 1)
 
-- [ ] GitHub OAuth läuft, nur Oliver kommt rein
-- [ ] F1 Org-Chart zeigt echte Daten aus `_hr/agents/`
-- [ ] F2 Projekt-Übersicht zeigt mindestens agency-dashboard
-- [ ] F3 zeigt Token-Budget pro Agent aus `_finance/`
-- [ ] Alle Playwright-Baselines gesetzt, kein visueller Regression
-- [ ] Deployment auf Hetzner via Coolify funktioniert (Staging)
-- [ ] Kein PII in Logs (DSGVO)
+- [x] GitHub OAuth läuft, nur Oliver kommt rein ✅
+- [x] F1 Org-Chart zeigt echte Daten aus `_hr/agents/` ✅
+- [x] F2 Projekt-Übersicht zeigt mindestens agency-dashboard ✅
+- [x] F3 zeigt Token-Budget pro Agent aus `_finance/` ✅
+- [ ] Alle Playwright-Baselines gesetzt (SETUP-4 ausstehend) ⏳
+- [ ] Deployment auf Hetzner via Coolify funktioniert (Staging) ⏳
+- [x] Kein PII in Logs (DSGVO) ✅
+
+**Sprint-Fortschritt:** 9/14 Tickets Done — Blocker: SETUP-4 (QA), Coolify Deployment
 
 ---
 
